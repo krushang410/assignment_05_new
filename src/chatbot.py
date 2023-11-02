@@ -50,8 +50,71 @@ def get_balance(account : int) -> int :
     else :
         raise Exception ("Account number does not exist.")
     
-print(get_balance(123456))
+def get_balance(account : int) -> int :
+    
+    """
+    Retrieve the balance of a specified account.
+
+    Args:
+        account : The account number for which to get the balance.
+
+    Returns:
+        str: A message with account number and its balance.
+
+    Raises:
+        Exception: If the account number is not  in the ACCOUNTS dictionary.
+    """
+    
+    if account in ACCOUNTS:
         
+        balance = ACCOUNTS[account]['balance']
+        return f"your current balance for account {account} is $ {balance}" 
+        #print("your current balance for account", account , "is" ,net_balance )
+        
+    else :
+        raise Exception ("Account number does not exist.")
+        
+    
+#print(get_balance(789012))
+
+#3
+def make_deposit(account : int , amount : float ) -> str :
+    
+    
+    """
+    updates balance with deposit from user
+    
+    arg : 
+        account : checks the account number
+        amount: transaction amount to be added in balance
+        
+    Returns:
+        str: a message with deposite amount and corresponding account number
+        
+    Raises:
+        Exception : if account number does not exist
+        Valueerror : if account number entered is less than 0
+    """
+    
+    if account  not in ACCOUNTS :
+        
+        raise Exception("Account number does not exist.")
+    
+    elif amount < 0  :
+        raise ValueError ("Invalid Amount. Amount must be positive.")
+    
+    else:
+        balance = ACCOUNTS[account]['balance']
+        #new_balance = balance + amount
+        ACCOUNTS[account]["balance"] += amount# updating dict
+        print(ACCOUNTS)
+        #print(new_balance)
+    
+    return  f"You have made a deposite of ${amount} to account {account} ."
+        
+        
+print(ACCOUNTS)
+print(make_deposit(789012,0))
 
 ## REQUIRES REVISION
 
