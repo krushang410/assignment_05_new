@@ -8,6 +8,9 @@ Usage: From the console: python src/chatbot.py
 """
 
 ## GIVEN CONSTANT COLLECTIONS
+from unittest.mock import patch
+
+
 ACCOUNTS = {
     123456 : {"balance" : 1000.0},
     789012 : {"balance" : 2000.0}
@@ -21,7 +24,38 @@ VALID_TASKS = {"balance", "deposit", "exit"}
 
 
 ## GIVEN CHATBOT FUNCTION
+#01
+def get_account() -> int:
+    
+    while True:
+        try:
+            account_number = int(input("Please enter your account number: "))
+            if account_number in ACCOUNTS:
+                return account_number
+            else:
+                raise Exception("Account number entered does not exist.")
+        except ValueError:
+            raise ValueError("Account number must be a whole number.")
+    
+#02
+
+def get_balance(account : int) -> int :
+    
+    if account in ACCOUNTS:
+        
+        balance = ACCOUNTS[account]['balance']
+        return f"your current balance for account {account} is $ {balance}" 
+        #print("your current balance for account", account , "is" ,net_balance )
+        
+    else :
+        raise Exception ("Account number does not exist.")
+    
+print(get_balance(123456))
+        
+
 ## REQUIRES REVISION
+
+
 """
 def chatbot():
     '''
