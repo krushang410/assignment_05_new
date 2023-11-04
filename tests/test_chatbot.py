@@ -1,7 +1,7 @@
 """
 Description:Contains test functions and cases to ensures if the function and components are correct.
 Author:Krushang Bhatt
-Date:2023-10-3
+Date:2023-10-31
 Usage:Used to write and run the tests for the functions.
 """
 import unittest
@@ -12,6 +12,8 @@ from src.chatbot import get_amount
 from src.chatbot import get_account, get_amount, get_balance
 from src.chatbot import get_account, get_amount, get_balance, make_deposit
 from src.chatbot import get_account, get_amount, get_balance, make_deposit, user_selection
+
+
 
 class ChatbotTests(unittest.TestCase):
     def test_get_acc_valid_number(self):
@@ -31,14 +33,14 @@ class ChatbotTests(unittest.TestCase):
 
             #Arrange
             mock_input.side_effect = ["non_numeric_data"]
-            expected = "Account number must be a whole number."
+            over = "Account number must be a whole number."
             
             #Act
             with self.assertRaises(Exception) as context:
                 get_account()
             
             #Assert
-            self.assertEqual(str(context.exception), expected)
+            self.assertEqual(str(context.exception), over)
         
     def test_get_account_not_exist(self):
         with patch("builtins.input") as mock_input:
@@ -120,7 +122,7 @@ class ChatbotTests(unittest.TestCase):
             self.assertEqual(str(context.exception), expected)
 
     def test_make_deposit_balance_is_correctly_updated(self):
-
+##Made some changes for output might remove letter()
             #Arrange
             account = ["123456"]
             balance = 1000
@@ -215,8 +217,7 @@ class ChatbotTests(unittest.TestCase):
 
             #Assert
             self.assertEqual(str(context.exception), expected)
-
-            
+           
 
 
 
