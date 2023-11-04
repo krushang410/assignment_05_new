@@ -118,14 +118,12 @@ def user_selection() -> str:
         raise ValueError("Invalid task. Please choose balance, deposit, or exit.")
     
 
-# try:
-#     num = user_selection()
-#     print(num)
-# except ValueError as e:
-#     print(e)
+try:
+     num = user_selection()
+     print(num)
+except ValueError as e:
+     print(e)
 
-## GIVEN CHATBOT FUNCTION
-## REQUIRES REVISION
 
 def chatbot():
     
